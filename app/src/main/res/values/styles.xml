@@ -8,14 +8,14 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="TextView.HelloWorld.ViewAll">
+    <style name="TextView.MainActivity.ViewAll">
         <item name="android:textColor">@color/primaryColor</item>
         <item name="android:textSize">14sp</item>
     </style>
     <style name="TextView">
 
     </style>
-    <style name="TextView.HelloWorld">
+    <style name="TextView.MainActivity">
 
     </style>
     <style name="RoundCornerOverlay">
