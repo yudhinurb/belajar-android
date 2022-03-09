@@ -10,11 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZWallet">
         <activity
+            android:name=".ui.AuthActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MainActivity2"
             android:exported="false" />
         <activity
             android:name=".ui.SplashScreenActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
