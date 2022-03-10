@@ -32,18 +32,18 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
-        binding.editPassword.addTextChangedListener {
-            if (binding.editPassword.text.length > 8) {
+        binding.inputPassword.addTextChangedListener {
+            if (binding.inputPassword.text.length > 8) {
                 binding.btnLogin.setBackgroundResource(R.drawable.background_button_login_active)
                 binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
-            } else if (binding.editPassword.text.length <= 8) {
+            } else if (binding.inputPassword.text.length <= 8) {
                 binding.btnLogin.setBackgroundResource(R.drawable.background_button_login)
                 binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
             }
         }
 
         binding.btnLogin.setOnClickListener {
-            Toast.makeText(context, "${binding.editEmail.text} / ${binding.editPassword.text}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "${binding.inputEmail.text} / ${binding.inputPassword.text}", Toast.LENGTH_SHORT).show()
             Handler().postDelayed({
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
