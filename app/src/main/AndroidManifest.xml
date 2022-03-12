@@ -13,7 +13,7 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ZWallet">
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".ui.auth.AuthActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity2"
@@ -31,7 +31,7 @@
             android:name=".ui.HelloWorld"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="false" />
     </application>
 

@@ -15,4 +15,6 @@
     <string name="text_forgot_password">Forgot Password?</string>
     <string name="text_have_account">Don’t have an account?</string>
     <string name="text_alreadyhave_account">Already have an account?</string>
+    <string name="topup_desc">We provide you virtual account number for top up via nearest ATM.</string>
+    <string name="fisrt_step_topup_desc">Go to the nearest ATM or you can use E-Banking.</string>
 </resources>

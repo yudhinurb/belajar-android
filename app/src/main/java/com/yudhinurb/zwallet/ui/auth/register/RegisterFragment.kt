@@ -1,6 +1,5 @@
-package com.yudhinurb.zwallet.ui
+package com.yudhinurb.zwallet.ui.auth.register
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Color
@@ -14,16 +13,11 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import com.yudhinurb.zwallet.R
-import com.yudhinurb.zwallet.databinding.FragmentLoginBinding
 import com.yudhinurb.zwallet.databinding.FragmentRegisterBinding
 import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.RegisterRequest
 import com.yudhinurb.zwallet.network.NetworkConfig
-import com.yudhinurb.zwallet.utils.KEY_LOGGED_IN
-import com.yudhinurb.zwallet.utils.KEY_USER_EMAIL
-import com.yudhinurb.zwallet.utils.KEY_USER_REFRESH_TOKEN
-import com.yudhinurb.zwallet.utils.KEY_USER_TOKEN
+import com.yudhinurb.zwallet.ui.auth.AuthActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -67,7 +61,7 @@ class RegisterFragment : Fragment() {
                 binding.inputEmail.text.toString(),
                 binding.inputPassword.text.toString()
             )
-            NetworkConfig(context).getService().signup(registerRequest)
+            NetworkConfig(context).buildApi().signup(registerRequest)
                 .enqueue(object: Callback<APIResponse<String>> {
                     override fun onResponse(
                         call: Call<APIResponse<String>>,

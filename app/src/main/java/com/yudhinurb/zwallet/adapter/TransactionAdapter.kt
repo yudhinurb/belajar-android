@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.imageview.ShapeableImageView
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.data.Transaction
+import com.yudhinurb.zwallet.model.Invoice
+import com.yudhinurb.zwallet.utils.BASE_URL
 
-class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
-    lateinit var contextAdapter: Context
+class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
+    private lateinit var contextAdapter: Context
 
     class TransactionAdapterHolder(view: View): RecyclerView.ViewHolder(view) {
         private val image: ShapeableImageView = view.findViewById(R.id.imageTransaction)
@@ -19,11 +23,13 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
         private val type: TextView = view.findViewById(R.id.textTransactionType)
         private val amount: TextView = view.findViewById(R.id.textTransactionAmount)
 
-        fun bindData(data: Transaction, context: Context, position: Int){
-            name.text = data.transactionName
-            type.text = data.transactionType
-            amount.text = data.transactionNominal.toString()
-            image.setImageDrawable(data.transactionImage)
+        fun bindData(data: Invoice, context: Context, position: Int){
+            name.text = data.name
+            type.text = data.type?.uppercase()
+            amount.text = data.amount.toString()
+            Glide.with(image).load(BASE_URL+data.image).apply(
+                RequestOptions.circleCropTransform().placeholder(R.drawable.rumbling)
+            ).into(image)
         }
     }
 
@@ -40,5 +46,9 @@ class TransactionAdapter(private var data: List<Transaction>): RecyclerView.Adap
 
     override fun getItemCount(): Int {
         return this.data.size
+    }
+
+    fun addData(data: List<Invoice>){
+        this.data = data
     }
 }

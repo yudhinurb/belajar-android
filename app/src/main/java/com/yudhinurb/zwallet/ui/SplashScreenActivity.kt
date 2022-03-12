@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.yudhinurb.zwallet.R
+import com.yudhinurb.zwallet.ui.auth.AuthActivity
+import com.yudhinurb.zwallet.ui.main.MainActivity
 import com.yudhinurb.zwallet.utils.KEY_LOGGED_IN
 import com.yudhinurb.zwallet.utils.PREFS_NAME
 

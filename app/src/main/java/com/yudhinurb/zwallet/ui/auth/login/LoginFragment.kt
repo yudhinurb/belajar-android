@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui
+package com.yudhinurb.zwallet.ui.auth.login
 
 import android.content.Context
 import android.content.Intent
@@ -6,30 +6,27 @@ import android.content.SharedPreferences
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentLoginBinding
-import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.User
-import com.yudhinurb.zwallet.model.request.LoginRequest
-import com.yudhinurb.zwallet.network.NetworkConfig
+import com.yudhinurb.zwallet.ui.main.MainActivity
+import com.yudhinurb.zwallet.ui.viewModelsFactory
 import com.yudhinurb.zwallet.utils.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.net.ssl.HttpsURLConnection
 
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
-    private lateinit var prefs: SharedPreferences
+    private val viewModel: LoginViewModel by viewModelsFactory { LoginViewModel(requireActivity().application) }
+    private lateinit var preferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,14 +34,13 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(layoutInflater)
+        preferences = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
-
-        prefs = activity?.getSharedPreferences(PREFS_NAME ,Context.MODE_PRIVATE)!!
 
         binding.inputPassword.addTextChangedListener {
             if (binding.inputPassword.text.length > 8) {
@@ -61,41 +57,28 @@ class LoginFragment : Fragment() {
                 Toast.makeText(activity, "email or password is empty", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val loginRequest = LoginRequest(
+            val response = viewModel.login(
                 binding.inputEmail.text.toString(),
                 binding.inputPassword.text.toString()
             )
-            NetworkConfig(context).getService().login(loginRequest)
-                .enqueue(object: Callback<APIResponse<User>> {
-                    override fun onResponse(
-                        call: Call<APIResponse<User>>,
-                        response: Response<APIResponse<User>>
-                    ) {
-                        if (response.body()?.status != HttpsURLConnection.HTTP_OK){
-                            Toast.makeText(context, "Authentication Failed: Wrong email/password", Toast.LENGTH_SHORT).show()
-                        } else {
-                            val res = response.body()!!.data
 
-                            with (prefs.edit()){
-                                putBoolean(KEY_LOGGED_IN, true)
-                                putString(KEY_USER_EMAIL, res?.email)
-                                putString(KEY_USER_TOKEN, res?.token)
-                                putString(KEY_USER_REFRESH_TOKEN, res?.refreshToken)
-                                apply()
-                            }
-                            Handler().postDelayed({
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            }, 2000)
-                        }
+            response.observe(viewLifecycleOwner) {
+                if (it.status == HttpsURLConnection.HTTP_OK){
+                    with(preferences.edit()) {
+                        putBoolean(KEY_LOGGED_IN, true)
+                        putString(KEY_USER_EMAIL, it.data?.email)
+                        putString(KEY_USER_TOKEN, it.data?.token)
+                        putString(KEY_USER_REFRESH_TOKEN, it.data?.refreshToken)
+                        apply()
                     }
-
-                    override fun onFailure(call: Call<APIResponse<User>>, t: Throwable) {
-                        Toast.makeText(context, t.localizedMessage, Toast.LENGTH_SHORT).show()
-                    }
-
-                })
+                    Handler().postDelayed({
+                        val intent = Intent(activity, MainActivity::class.java)
+                        startActivity(intent)
+                        activity?.finish()}, 2000)
+                } else {
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         binding.textSignUp.setOnClickListener {

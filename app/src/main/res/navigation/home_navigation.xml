@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.yudhinurb.zwallet.ui.HomeFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action android:id="@+id/homeActionProfile"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.yudhinurb.zwallet.ui.ProfileFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

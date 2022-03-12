@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui
+package com.yudhinurb.zwallet.ui.auth.forgotpassword
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

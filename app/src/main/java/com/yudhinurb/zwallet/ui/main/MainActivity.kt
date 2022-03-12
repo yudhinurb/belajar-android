@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui
+package com.yudhinurb.zwallet.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
