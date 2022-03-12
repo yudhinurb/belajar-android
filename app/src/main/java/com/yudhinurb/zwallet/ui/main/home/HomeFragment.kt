@@ -51,6 +51,10 @@ class HomeFragment : Fragment() {
         binding.imageProfile.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.homeActionProfile)
         }
+
+        binding.buttonTopUp.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_topupFragment)
+        }
     }
     fun prepareData(){
         this.transactionAdapter = TransactionAdapter(listOf())

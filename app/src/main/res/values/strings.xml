@@ -17,4 +17,11 @@
     <string name="text_alreadyhave_account">Already have an account?</string>
     <string name="topup_desc">We provide you virtual account number for top up via nearest ATM.</string>
     <string name="fisrt_step_topup_desc">Go to the nearest ATM or you can use E-Banking.</string>
+    <string name="second_step_topup_desc">Type your security number on the ATM or E-Banking.</string>
+    <string name="third_step_topup_desc">Select “Transfer” in the menu</string>
+    <string name="fourth_step_topup_desc">Type the virtual account number that we provide you at the top.</string>
+    <string name="fifth_step_topup_desc">Type the amount of the money you want to top up.</string>
+    <string name="sixth_step_topup_desc">Read the summary details</string>
+    <string name="seventh_step_topup_desc">Press transfer / top up</string>
+    <string name="eighth_step_topup_desc">You can see your money in Zwallet within 3 hours.</string>
 </resources>
