@@ -71,8 +71,16 @@ class ProfileFragment : Fragment() {
 //            Navigation.findNavController(view).navigate(R.id.homeActionProfile)
         }
 
+        binding.btnBack.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeFragment)
+        }
+
         binding.menuPersonalInformation.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_personalInformationFragment)
+        }
+
+        binding.menuChangePin.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
         }
     }
 

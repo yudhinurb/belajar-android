@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentHomeBinding
 import com.yudhinurb.zwallet.databinding.FragmentPersonalInformationBinding
@@ -46,6 +47,10 @@ class PersonalInformationFragment : Fragment() {
             } else {
                 Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.btnBack.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_personalInformationFragment_to_profileFragment)
         }
     }
 

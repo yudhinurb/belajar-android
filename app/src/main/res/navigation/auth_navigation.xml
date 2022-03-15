@@ -33,10 +33,18 @@
         tools:layout="@layout/fragment_forgot_password">
         <action android:id="@+id/registerActionLogin"
             app:destination="@+id/loginFragment"/>
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/createPinFragment"
         android:name="com.yudhinurb.zwallet.ui.auth.createpin.CreatePinFragment"
         android:label="CreatePinFragment"
         tools:layout="@layout/fragment_create_pin"/>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.yudhinurb.zwallet.ui.auth.resetpassword.ResetPasswordFragment"
+        android:label="ResetPasswordFragment"
+        tools:layout="@layout/fragment_reset_password"/>
 </navigation>

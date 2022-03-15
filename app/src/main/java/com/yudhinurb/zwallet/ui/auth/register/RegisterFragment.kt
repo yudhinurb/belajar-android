@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.Navigation
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentRegisterBinding
 import com.yudhinurb.zwallet.model.APIResponse
@@ -86,6 +87,8 @@ class RegisterFragment : Fragment() {
                     }
                 })
         }
-
+        binding.textLogin.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.registerActionLogin)
+        }
     }
 }

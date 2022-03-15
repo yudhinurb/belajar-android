@@ -24,6 +24,12 @@
         <action
             android:id="@+id/action_profileFragment_to_personalInformationFragment"
             app:destination="@id/personalInformationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePinFragment"
+            app:destination="@id/changePinFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/topupFragment"
@@ -36,6 +42,31 @@
         android:id="@+id/personalInformationFragment"
         android:name="com.yudhinurb.zwallet.ui.main.personalinformation.PersonalInformationFragment"
         android:label="PersonalInformationFragment"
-        tools:layout="@layout/fragment_personal_information"/>
+        tools:layout="@layout/fragment_personal_information">
+        <action
+            android:id="@+id/action_personalInformationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePinFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.changepin.ChangePinFragment"
+        android:label="fragment_change_pin"
+        tools:layout="@layout/fragment_change_pin" >
+        <action
+            android:id="@+id/action_changePinFragment_to_newPinFragment"
+            app:destination="@id/newPinFragment" />
+        <action
+            android:id="@+id/action_changePinFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPinFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.changepin.NewPinFragment"
+        android:label="fragment_new_pin"
+        tools:layout="@layout/fragment_new_pin" >
+        <action
+            android:id="@+id/action_newPinFragment_to_changePinFragment"
+            app:destination="@id/changePinFragment" />
+    </fragment>
 
 </navigation>
