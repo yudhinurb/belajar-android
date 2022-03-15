@@ -79,11 +79,17 @@ class LoginFragment : Fragment() {
                                 putString(KEY_USER_REFRESH_TOKEN, it.resource.data?.refreshToken)
                                 apply()
                             }
-                            Handler().postDelayed({
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
+                            if (it.resource.data?.hasPin == true){
+                                Handler().postDelayed({
+                                    val intent = Intent(activity, MainActivity::class.java)
+                                    startActivity(intent)
+                                    loadingDialog.stop()
+                                    activity?.finish()}, 2000)
+                            } else {
+                                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_createPinFragment)
                                 loadingDialog.stop()
-                                activity?.finish()}, 2000)
+                            }
+
                         } else {
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }

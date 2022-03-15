@@ -8,9 +8,11 @@
     <string name="text_login_desc">Login to your existing account to access all the features in Zwallet</string>
     <string name="text_register_desc">Create your account to access Zwallet.</string>
     <string name="text_reset_desc">Enter your Zwallet e-mail so we can send you a password reset link.</string>
+    <string name="text_reset_password_desc">Create and confirm your new password so you can login to Zwallet.</string>
     <string name="hint_email">Enter your e-mail</string>
     <string name="hint_username">Enter your username</string>
     <string name="hint_password">Enter your password</string>
+
     <string name="create_password">Create your password</string>
     <string name="text_forgot_password">Forgot Password?</string>
     <string name="text_have_account">Don’t have an account?</string>
@@ -32,4 +34,14 @@
     <string name="text_last_name">Last Name</string>
     <string name="text_verified_email">Verified E-mail</string>
     <string name="text_phone_number">Phone Number</string>
+
+
+    <string name="text_create_pin">Create Security PIN</string>
+    <string name="text_create_pin_desc">Create a PIN that’s contain 6 digits number for security purpose in Zwallet.</string>
+    <string name="text_pin_success">PIN Successfully Created</string>
+    <string name="text_pin_success_desc">Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</string>
+
+    <string name="text_change_pin_desc">Enter your current 6 digits Zwallet PIN below to continue to the next steps.</string>
+    <string name="text_new_pin_desc">Type your new 6 digits security PIN to use in Zwallet.</string>
+
 </resources>
