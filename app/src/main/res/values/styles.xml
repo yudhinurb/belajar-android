@@ -1,12 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="TextView">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+    </style>
     <style name="TextView.SplashScreen">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">32sp</item>
     </style>
     <style name="TextView.SplashScreen.Desc">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextView.XSmall">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextView.Small">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextView.Medium">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="TextView.Large">
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="TextView.Small.Bold">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextView.Medium.Bold">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="TextView.Large.Bold">
+        <item name="android:fontFamily">@font/nunito_sans_bold</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/greyText</item>
+    </style>
+
+
+
+    <style name="TextView.MainActivity">
+
     </style>
     <style name="TextView.MainActivity.ViewAll">
         <item name="android:textColor">@color/primaryColor</item>
@@ -15,31 +55,24 @@
     <style name="TextView.Login">
         <item name="android:textSize">24sp</item>
     </style>
-    <style name="TextView.Medium">
-        <item name="android:textSize">18sp</item>
-    </style>
     <style name="TextView.Login.Desc">
         <item name="android:textSize">14sp</item>
     </style>
-    <style name="TextView">
 
-    </style>
-    <style name="TextView.MainActivity">
-
-    </style>
     <style name="RoundCornerOverlay">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
+    <style name="EditText">
+    </style>
     <style name="EditText.Input">
-        <item name="android:textColorHint">@color/darkGreyColor</item>
-        <item name="android:textColor">@color/darkGreyColor</item>
+        <item name="android:fontFamily">@font/nunito_sans</item>
+        <item name="android:textColorHint">@color/lightGreyText</item>
+        <item name="android:textColor">@color/lightGreyText</item>
         <item name="android:textSize">16sp</item>
         <item name="android:drawablePadding">16dp</item>
         <item name="android:paddingBottom">10dp</item>
     </style>
-    <style name="EditText">
 
-    </style>
 
 </resources>

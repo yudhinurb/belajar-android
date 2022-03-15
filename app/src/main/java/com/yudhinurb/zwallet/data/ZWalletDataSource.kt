@@ -7,37 +7,51 @@ import com.yudhinurb.zwallet.model.Balance
 import com.yudhinurb.zwallet.model.Invoice
 import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.LoginRequest
+import com.yudhinurb.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 
 
 class ZWalletDataSource(private val apiCLient: ZWalletApi) {
-    fun login(email: String, password: String) = liveData<APIResponse<User>>(Dispatchers.IO) {
+    fun login(email: String, password: String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             val loginRequest = LoginRequest(email=email, password=password)
             val response = apiCLient.login(loginRequest)
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception) {
-            emit(APIResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
         }
 
     }
 
-    fun getInvoice() = liveData<APIResponse<List<Invoice>>>(Dispatchers.IO) {
+    fun getInvoice() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             var response = apiCLient.getInvoice()
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception){
-            emit(APIResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
         }
     }
 
-    fun getBalance() = liveData<APIResponse<List<Balance>>>(Dispatchers.IO) {
+    fun getBalance() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
         try {
             var response = apiCLient.getBalance()
-            emit(response)
+            emit(Resource.success(response))
         } catch (e: Exception){
-            emit(APIResponse(400, e.localizedMessage, null))
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun getProfile() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            var response = apiCLient.getProfile()
+            emit(Resource.success(response))
+        } catch (e: Exception){
+            emit(Resource.error(null, e.localizedMessage))
         }
     }
 }

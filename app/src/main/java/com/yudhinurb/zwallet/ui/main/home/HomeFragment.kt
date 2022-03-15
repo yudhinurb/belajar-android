@@ -1,8 +1,10 @@
 package com.yudhinurb.zwallet.ui.main.home
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +20,10 @@ import com.yudhinurb.zwallet.databinding.FragmentHomeBinding
 import com.yudhinurb.zwallet.model.APIResponse
 import com.yudhinurb.zwallet.model.Balance
 import com.yudhinurb.zwallet.network.NetworkConfig
+import com.yudhinurb.zwallet.ui.main.MainActivity
 import com.yudhinurb.zwallet.ui.viewModelsFactory
+import com.yudhinurb.zwallet.utils.*
 import com.yudhinurb.zwallet.utils.Helper.formatPrice
-import com.yudhinurb.zwallet.utils.PREFS_NAME
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -56,6 +59,7 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_topupFragment)
         }
     }
+
     fun prepareData(){
         this.transactionAdapter = TransactionAdapter(listOf())
 
@@ -65,11 +69,11 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getBalance().observe(viewLifecycleOwner) {
-            if (it.status == HttpsURLConnection.HTTP_OK){
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK){
                 binding.apply {
-                    textBalanceAmount.formatPrice(it.data?.get(0)?.balance.toString())
-                    textPhoneNumber.text = it.data?.get(0)?.phone
-                    textName.text = it.data?.get(0)?.name
+                    textBalanceAmount.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                    textPhoneNumber.text = it.resource.data?.get(0)?.phone
+                    textName.text = it.resource.data?.get(0)?.name
                 }
             } else {
                 Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
@@ -77,13 +81,33 @@ class HomeFragment : Fragment() {
         }
 
         viewModel.getInvoice().observe(viewLifecycleOwner) {
-            if (it.status == HttpsURLConnection.HTTP_OK){
-                this.transactionAdapter.apply {
-                    addData(it.data!!)
-                    notifyDataSetChanged()
+            when (it.state) {
+                State.LOADING -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                        recyclerTransaction.visibility = View.GONE
+                    }
                 }
-            } else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                State.SUCCESS -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                        recyclerTransaction.visibility = View.VISIBLE
+                    }
+                    if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                        this.transactionAdapter.apply {
+                            addData(it.resource.data!!)
+                            notifyDataSetChanged()
+                        }
+                    } else {
+                        Toast.makeText(context, it.resource?.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                State.ERROR -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                        recyclerTransaction.visibility = View.GONE
+                    }
+                }
             }
         }
     }

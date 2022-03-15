@@ -15,6 +15,7 @@
     <string name="text_forgot_password">Forgot Password?</string>
     <string name="text_have_account">Don’t have an account?</string>
     <string name="text_alreadyhave_account">Already have an account?</string>
+
     <string name="topup_desc">We provide you virtual account number for top up via nearest ATM.</string>
     <string name="fisrt_step_topup_desc">Go to the nearest ATM or you can use E-Banking.</string>
     <string name="second_step_topup_desc">Type your security number on the ATM or E-Banking.</string>
@@ -24,4 +25,11 @@
     <string name="sixth_step_topup_desc">Read the summary details</string>
     <string name="seventh_step_topup_desc">Press transfer / top up</string>
     <string name="eighth_step_topup_desc">You can see your money in Zwallet within 3 hours.</string>
+
+
+    <string name="personal_desc">We got your personal information from the sign up process. If you want to make changes on yout information contact our support.</string>
+    <string name="text_first_name">First Name</string>
+    <string name="text_last_name">Last Name</string>
+    <string name="text_verified_email">Verified E-mail</string>
+    <string name="text_phone_number">Phone Number</string>
 </resources>

@@ -21,13 +21,21 @@
         android:name="com.yudhinurb.zwallet.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_personalInformationFragment"
+            app:destination="@id/personalInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/topupFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.TopupFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.topup.TopupFragment"
         android:label="TopupFragment"
         tools:layout="@layout/fragment_topup">
 
     </fragment>
+    <fragment
+        android:id="@+id/personalInformationFragment"
+        android:name="com.yudhinurb.zwallet.ui.main.personalinformation.PersonalInformationFragment"
+        android:label="PersonalInformationFragment"
+        tools:layout="@layout/fragment_personal_information"/>
 
 </navigation>

@@ -10,14 +10,16 @@
 
 <!--color pallete-->
     <color name="primaryColor">#6379F4</color>
+    <color name="backgroundColor">#EFF1FD</color>
     <color name="blueColor">#608DE2</color>
     <color name="greenColor">#1EC15F</color>
     <color name="redColor">#FF5B37</color>
-    <color name="backgroundColor">#F0F2F4</color>
-    <color name="backgroundColorButton">#EAEDFF</color>
-    <color name="backgroundColorButtonAuth">#DADADA</color>
+    <color name="backgroundColorButton">#DADADA</color>
     <color name="greyColor">#DFDCDC</color>
     <color name="darkGreyColor">#9DA6D5</color>
-    <color name="greyText">#3A3D42</color>
+
+    <color name="blackText">#3A3D42</color>
+    <color name="lightGreyText">#B0B1B3</color>
+    <color name="greyText">#9c9ea0</color>
 
 </resources>

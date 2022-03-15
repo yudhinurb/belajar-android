@@ -1,9 +1,6 @@
 package com.yudhinurb.zwallet.data.api
 
-import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.Balance
-import com.yudhinurb.zwallet.model.Invoice
-import com.yudhinurb.zwallet.model.User
+import com.yudhinurb.zwallet.model.*
 import com.yudhinurb.zwallet.model.request.LoginRequest
 import com.yudhinurb.zwallet.model.request.RefreshTokenRequest
 import com.yudhinurb.zwallet.model.request.RegisterRequest
@@ -27,4 +24,7 @@ interface ZWalletApi {
 
     @POST("auth/refresh-token")
     fun refreshToken(@Body request: RefreshTokenRequest): Call<APIResponse<User>>
+
+    @GET("user/myProfile")
+    suspend fun getProfile(): APIResponse<Profile>
 }

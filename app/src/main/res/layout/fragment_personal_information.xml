@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/backgroundColor"
+    tools:context=".ui.main.personalinformation.PersonalInformationFragment">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btnBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textPersonalInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="Personal Information"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/btnBack"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <TextView
+        android:id="@+id/textPersonalDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_desc"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="16sp"
+        android:gravity="start"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"/>
+
+    <ScrollView
+        android:id="@+id/scrollViewPersonal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textPersonalDesc">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:id="@+id/cardFirstName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_item_profile_menu"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+                <TextView
+                    android:id="@+id/textFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="@string/text_first_name"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="14sp"/>
+                <TextView
+                        android:id="@+id/firstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Samuel"
+                        android:textSize="16sp"
+                        android:textColor="@color/greyText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardLastName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_item_profile_menu"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardFirstName"
+
+                >
+                <TextView
+                    android:id="@+id/textLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_last_name"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/lastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sushi"
+                    android:textSize="16sp"
+                    android:textColor="@color/greyText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardVerifiedEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_item_profile_menu"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardLastName"
+
+                >
+                <TextView
+                    android:id="@+id/textVerifiedEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/text_verified_email"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/darkGreyColor"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:id="@+id/verifiedEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="yudhinurb@gmail.com"
+                    android:textSize="16sp"
+                    android:textColor="@color/greyText"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardPhoneNumber"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_item_profile_menu"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardVerifiedEmail">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textPhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_phone_number"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/darkGreyColor"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/phoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+62 813384759392"
+                        android:textSize="16sp"
+                        android:textColor="@color/greyText"/>
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Manage"
+                    android:textColor="@color/primaryColor"
+                    android:layout_marginEnd="20dp"/>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
