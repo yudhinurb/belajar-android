@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MainApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,13 +14,13 @@
         android:theme="@style/Theme.ZWallet"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.auth.AuthActivity"
+            android:name=".ui.layout.auth.AuthActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MainActivity2"
+            android:name=".ui.layout.MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".ui.layout.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.layout.main.MainActivity"
             android:exported="false" />
 
         <meta-data

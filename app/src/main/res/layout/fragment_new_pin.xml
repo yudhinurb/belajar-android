@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".ui.main.changepin.NewPinFragment">
+    tools:context=".ui.layout.main.changepin.NewPinFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnBack"

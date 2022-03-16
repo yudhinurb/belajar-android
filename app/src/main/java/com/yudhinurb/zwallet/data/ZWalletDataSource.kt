@@ -11,9 +11,10 @@ import com.yudhinurb.zwallet.model.request.SetPinRequest
 import com.yudhinurb.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
+import javax.inject.Inject
 
 
-class ZWalletDataSource(private val apiCLient: ZWalletApi) {
+class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
     fun login(email: String, password: String) = liveData(Dispatchers.IO) {
         emit(Resource.loading(null))
         try {

@@ -7,7 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/backgroundColor"
-    tools:context=".ui.main.findreceiver.FindReceiverFragment">
+    tools:context=".ui.layout.main.findreceiver.FindReceiverFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnBack"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".ui.main.profile.ProfileFragment">
+    tools:context=".ui.layout.main.profile.ProfileFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btnBack"

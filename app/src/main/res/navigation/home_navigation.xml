@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.home.HomeFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action android:id="@+id/homeActionProfile"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.profile.ProfileFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile">
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/topupFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.topup.TopupFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.topup.TopupFragment"
         android:label="TopupFragment"
         tools:layout="@layout/fragment_topup">
 
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalInformationFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.personalinformation.PersonalInformationFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.personalinformation.PersonalInformationFragment"
         android:label="PersonalInformationFragment"
         tools:layout="@layout/fragment_personal_information">
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePinFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.changepin.ChangePinFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.changepin.ChangePinFragment"
         android:label="fragment_change_pin"
         tools:layout="@layout/fragment_change_pin" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/newPinFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.changepin.NewPinFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.changepin.NewPinFragment"
         android:label="fragment_new_pin"
         tools:layout="@layout/fragment_new_pin" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/findReceiverFragment"
-        android:name="com.yudhinurb.zwallet.ui.main.findreceiver.FindReceiverFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.findreceiver.FindReceiverFragment"
         android:label="fragment_find_receiver"
         tools:layout="@layout/fragment_find_receiver" >
         <action

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundColor"
-    tools:context=".ui.main.home.HomeFragment">
+    tools:context=".ui.layout.main.home.HomeFragment">
 
     <LinearLayout
         android:id="@+id/helloUser"
