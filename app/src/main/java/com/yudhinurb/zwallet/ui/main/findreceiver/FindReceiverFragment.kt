@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui.main.topup
+package com.yudhinurb.zwallet.ui.main.findreceiver
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,17 +8,17 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.navigation.Navigation
 import com.yudhinurb.zwallet.R
-import com.yudhinurb.zwallet.databinding.FragmentTopupBinding
+import com.yudhinurb.zwallet.databinding.FragmentFindReceiverBinding
 
-class TopupFragment : Fragment() {
-    private lateinit var binding : FragmentTopupBinding
+class FindReceiverFragment : Fragment() {
+    private lateinit var binding: FragmentFindReceiverBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTopupBinding.inflate(layoutInflater)
+        binding = FragmentFindReceiverBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -27,7 +27,7 @@ class TopupFragment : Fragment() {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         binding.btnBack.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_topupFragment_to_homeFragment)
+            Navigation.findNavController(view).navigate(R.id.action_findReceiverFragment_to_homeFragment)
         }
     }
 }

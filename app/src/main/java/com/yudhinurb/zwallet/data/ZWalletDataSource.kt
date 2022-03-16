@@ -7,6 +7,7 @@ import com.yudhinurb.zwallet.model.Balance
 import com.yudhinurb.zwallet.model.Invoice
 import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.LoginRequest
+import com.yudhinurb.zwallet.model.request.SetPinRequest
 import com.yudhinurb.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
@@ -49,6 +50,17 @@ class ZWalletDataSource(private val apiCLient: ZWalletApi) {
         emit(Resource.loading(null))
         try {
             var response = apiCLient.getProfile()
+            emit(Resource.success(response))
+        } catch (e: Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun setPin(pin: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val setPinRequest = SetPinRequest(PIN = pin)
+            var response = apiCLient.setPin(setPinRequest)
             emit(Resource.success(response))
         } catch (e: Exception){
             emit(Resource.error(null, e.localizedMessage))

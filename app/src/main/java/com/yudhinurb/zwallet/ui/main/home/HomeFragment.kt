@@ -1,33 +1,23 @@
 package com.yudhinurb.zwallet.ui.main.home
 
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.adapter.TransactionAdapter
 import com.yudhinurb.zwallet.data.Transaction
 import com.yudhinurb.zwallet.databinding.FragmentHomeBinding
-import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.Balance
-import com.yudhinurb.zwallet.network.NetworkConfig
-import com.yudhinurb.zwallet.ui.main.MainActivity
 import com.yudhinurb.zwallet.ui.viewModelsFactory
-import com.yudhinurb.zwallet.utils.*
 import com.yudhinurb.zwallet.utils.Helper.formatPrice
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.net.HttpURLConnection
+import com.yudhinurb.zwallet.utils.PREFS_NAME
+import com.yudhinurb.zwallet.utils.State
 import javax.net.ssl.HttpsURLConnection
 
 class HomeFragment : Fragment() {
@@ -57,6 +47,10 @@ class HomeFragment : Fragment() {
 
         binding.buttonTopUp.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_topupFragment)
+        }
+
+        binding.buttonTransfer.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_findReceiverFragment)
         }
     }
 

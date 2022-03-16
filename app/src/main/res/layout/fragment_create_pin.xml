@@ -68,7 +68,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/btnLogin"
+                app:layout_constraintBottom_toTopOf="@id/btnConfirm"
                 app:layout_constraintTop_toBottomOf="@id/textCreatePinDesc">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -185,7 +185,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnConfirm"
                 style="@style/TextView.Medium"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
