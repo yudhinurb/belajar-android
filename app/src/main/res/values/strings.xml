@@ -40,8 +40,10 @@
     <string name="text_create_pin_desc">Create a PIN that’s contain 6 digits number for security purpose in Zwallet.</string>
     <string name="text_pin_success">PIN Successfully Created</string>
     <string name="text_pin_success_desc">Your PIN was successfully created and you can now access all the features in Zwallet. Login to your new account and start exploring!</string>
+    <string name="text_pin_failed_desc">We can’t transfer your money at the moment, we recommend you to check your internet connection and try again.</string>
 
     <string name="text_change_pin_desc">Enter your current 6 digits Zwallet PIN below to continue to the next steps.</string>
     <string name="text_new_pin_desc">Type your new 6 digits security PIN to use in Zwallet.</string>
+    <string name="text_enter_pin_desc">Enter your 6 digits PIN for confirmation to continue transferring money.</string>
 
 </resources>

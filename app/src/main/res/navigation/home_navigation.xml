@@ -82,6 +82,49 @@
         <action
             android:id="@+id/action_findReceiverFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_findReceiverFragment_to_inputAmountFragment"
+            app:destination="@id/inputAmountFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/inputAmountFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.inputamount.InputAmountFragment"
+        android:label="fragment_input_amount"
+        tools:layout="@layout/fragment_input_amount" >
+        <action
+            android:id="@+id/action_inputAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.confirmation.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation" >
+        <action
+            android:id="@+id/action_confirmationFragment_to_enterPinFragment"
+            app:destination="@id/enterPinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enterPinFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.enterpin.EnterPinFragment"
+        android:label="fragment_enter_pin"
+        tools:layout="@layout/fragment_enter_pin" >
+        <action
+            android:id="@+id/action_enterPinFragment_to_transferSuccessFragment"
+            app:destination="@id/transferSuccessFragment" />
+        <action
+            android:id="@+id/action_enterPinFragment_to_transferFailedFragment"
+            app:destination="@id/transferFailedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferSuccessFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.transfersuccess.TransferSuccessFragment"
+        android:label="fragment_transfer_success"
+        tools:layout="@layout/fragment_transfer_success" />
+    <fragment
+        android:id="@+id/transferFailedFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.main.transferfailed.TransferFailedFragment"
+        android:label="fragment_transfer_failed"
+        tools:layout="@layout/fragment_transfer_failed" />
 
 </navigation>

@@ -28,10 +28,13 @@
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/button.xml" value="0.2" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_change_pin.xml" value="0.2" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_coba1.xml" value="0.15604959384352288" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_confirmation.xml" value="0.25" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_create_pin.xml" value="0.22" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_enter_pin.xml" value="0.25" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_find_receiver.xml" value="0.2" />
-        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_forgot_password.xml" value="0.18" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_forgot_password.xml" value="0.33" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_input_amount.xml" value="0.16" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_new_pin.xml" value="0.18" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_personal_information.xml" value="0.22" />
@@ -40,6 +43,8 @@
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_register.xml" value="0.12" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_reset_password.xml" value="0.22" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_topup.xml" value="0.16" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_transfer_failed.xml" value="0.25" />
+        <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/fragment_transfer_success.xml" value="0.2" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/item_contact_findreceiver.xml" value="0.1675929884566054" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/item_quick_access_findreceiver.xml" value="0.25" />
         <entry key="..\:/Users/yudhi_nur/AndroidStudioProjects/ZWallet/app/src/main/res/layout/item_transaction_home.xml" value="0.25" />

@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui.layout.main.findreceiver
+package com.yudhinurb.zwallet.ui.layout.main.inputamount
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,19 +9,18 @@ import android.view.WindowManager
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.yudhinurb.zwallet.R
-import com.yudhinurb.zwallet.databinding.FragmentFindReceiverBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.yudhinurb.zwallet.databinding.FragmentInputAmountBinding
 
-@AndroidEntryPoint
-class FindReceiverFragment : Fragment() {
-    private lateinit var binding: FragmentFindReceiverBinding
+
+class InputAmountFragment : Fragment() {
+    private lateinit var binding: FragmentInputAmountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentFindReceiverBinding.inflate(layoutInflater)
+        binding = FragmentInputAmountBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -33,8 +32,8 @@ class FindReceiverFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.textContacts.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_findReceiverFragment_to_inputAmountFragment)
+        binding.btnContinue.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_confirmationFragment)
         }
     }
 }

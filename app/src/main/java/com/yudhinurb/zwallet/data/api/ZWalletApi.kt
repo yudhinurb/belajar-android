@@ -6,10 +6,7 @@ import com.yudhinurb.zwallet.model.request.RefreshTokenRequest
 import com.yudhinurb.zwallet.model.request.RegisterRequest
 import com.yudhinurb.zwallet.model.request.SetPinRequest
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.PATCH
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ZWalletApi {
     @POST("auth/login")
@@ -32,4 +29,7 @@ interface ZWalletApi {
 
     @PATCH("auth/PIN")
     suspend fun setPin(@Body request: SetPinRequest): APIResponse<String>
+
+    @GET("auth/checkPIN/{pin}")
+    suspend fun checkPIN(@Path("pin") pin: Int): APIResponse<String>
 }

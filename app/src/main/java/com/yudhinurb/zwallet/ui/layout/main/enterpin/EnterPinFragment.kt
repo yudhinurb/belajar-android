@@ -1,4 +1,4 @@
-package com.yudhinurb.zwallet.ui.layout.main.findreceiver
+package com.yudhinurb.zwallet.ui.layout.main.enterpin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,21 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.yudhinurb.zwallet.R
-import com.yudhinurb.zwallet.databinding.FragmentFindReceiverBinding
-import dagger.hilt.android.AndroidEntryPoint
+import com.yudhinurb.zwallet.databinding.FragmentEnterPinBinding
 
-@AndroidEntryPoint
-class FindReceiverFragment : Fragment() {
-    private lateinit var binding: FragmentFindReceiverBinding
+
+class EnterPinFragment : Fragment() {
+    private lateinit var binding: FragmentEnterPinBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentFindReceiverBinding.inflate(layoutInflater)
+        binding = FragmentEnterPinBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -33,8 +33,9 @@ class FindReceiverFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.textContacts.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_findReceiverFragment_to_inputAmountFragment)
+        binding.btnLogin.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
         }
     }
+
 }
