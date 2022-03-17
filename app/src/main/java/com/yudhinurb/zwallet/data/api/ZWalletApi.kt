@@ -32,4 +32,7 @@ interface ZWalletApi {
 
     @GET("auth/checkPIN/{pin}")
     suspend fun checkPIN(@Path("pin") pin: Int): APIResponse<String>
+
+    @GET("tranfer/contactUser")
+    suspend fun getAllContacts(): APIResponse<List<AllContacts>>
 }

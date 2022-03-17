@@ -67,4 +67,14 @@ class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
             emit(Resource.error(null, e.localizedMessage))
         }
     }
+
+    fun getAllContacts() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            var response = apiCLient.getAllContacts()
+            emit(Resource.success(response))
+        } catch (e: Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
 }
