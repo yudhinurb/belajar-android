@@ -70,7 +70,7 @@
         style="@style/TextView.Small"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerQuickAccess"
+        android:id="@+id/recyclerContact"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
