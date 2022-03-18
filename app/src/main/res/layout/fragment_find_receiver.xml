@@ -72,12 +72,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerContact"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textFound"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/item_contact_findreceiver"/>
     <ProgressBar
         android:layout_width="48dp"
