@@ -27,7 +27,7 @@ class ContactAdapter(
 
         fun bindData(data: AllContacts, onClick: (AllContacts, View) -> Unit){
             Glide.with(image).load(BASE_URL +data.image).apply(
-                RequestOptions.circleCropTransform().placeholder(R.drawable.rumbling)
+                RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
             ).into(image)
             name.text = data.name.toString()
             phone.text = data.phone.toString()

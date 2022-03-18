@@ -14,11 +14,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentProfileBinding
 import com.yudhinurb.zwallet.ui.layout.SplashScreenActivity
 import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.ui.layout.viewModelsFactory
+import com.yudhinurb.zwallet.utils.BASE_URL
 import com.yudhinurb.zwallet.utils.KEY_LOGGED_IN
 import com.yudhinurb.zwallet.utils.PREFS_NAME
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,6 +52,9 @@ class ProfileFragment : Fragment() {
                 binding.apply {
                     textPhoneNumber.text = it.resource.data?.get(0)?.phone
                     textName.text = it.resource.data?.get(0)?.name
+                    Glide.with(imageProfile).load(BASE_URL +it.resource.data?.get(0)?.image).apply(
+                        RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
+                    ).into(imageProfile)
                 }
             } else {
                 Toast.makeText(context, "apasih", Toast.LENGTH_SHORT).show()

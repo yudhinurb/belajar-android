@@ -12,11 +12,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.ui.adapter.TransactionAdapter
 import com.yudhinurb.zwallet.data.Transaction
 import com.yudhinurb.zwallet.databinding.FragmentHomeBinding
 import com.yudhinurb.zwallet.ui.layout.viewModelsFactory
+import com.yudhinurb.zwallet.utils.BASE_URL
 import com.yudhinurb.zwallet.utils.Helper.formatPrice
 import com.yudhinurb.zwallet.utils.PREFS_NAME
 import com.yudhinurb.zwallet.utils.State
@@ -72,6 +75,9 @@ class HomeFragment : Fragment() {
                     textBalanceAmount.formatPrice(it.resource.data?.get(0)?.balance.toString())
                     textPhoneNumber.text = it.resource.data?.get(0)?.phone
                     textName.text = it.resource.data?.get(0)?.name
+                    Glide.with(imageProfile).load(BASE_URL +it.resource.data?.get(0)?.image).apply(
+                        RequestOptions.circleCropTransform().placeholder(R.drawable.rumbling)
+                    ).into(imageProfile)
                 }
             } else {
                 Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()

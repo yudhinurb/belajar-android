@@ -27,7 +27,7 @@ class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<
             type.text = data.type?.uppercase()
             amount.text = data.amount.toString()
             Glide.with(image).load(BASE_URL+data.image).apply(
-                RequestOptions.circleCropTransform().placeholder(R.drawable.rumbling)
+                RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
             ).into(image)
         }
     }
