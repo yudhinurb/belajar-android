@@ -112,7 +112,7 @@ tools:context=".ui.layout.main.transferfailed.TransferFailedFragment">
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginStart="10dp"
-                android:text="Balance"
+                android:text="Balance Left"
                 style="@style/TextView.Small"
                 android:textColor="@color/blackText"/>
             <TextView
@@ -223,7 +223,7 @@ tools:context=".ui.layout.main.transferfailed.TransferFailedFragment">
                 android:layout_height="56dp"
                 android:scaleType="centerCrop"
                 app:shapeAppearanceOverlay="@style/RoundCornerOverlay"
-                android:src="@drawable/rumbling"/>
+                android:src="@drawable/ic_baseline_broken_image_24"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

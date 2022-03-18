@@ -57,7 +57,6 @@ class EnterPinFragment : Fragment() {
 
             val pin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6
 
-
             viewModel.checkPin(pin.toInt()).observe(viewLifecycleOwner) {
                 when (it.state) {
                     State.LOADING -> {
@@ -68,12 +67,14 @@ class EnterPinFragment : Fragment() {
                             loadingDialog.stop()
                             Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
                         } else {
+                            Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferFailedFragment)
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
                     State.ERROR -> {
                         loadingDialog.stop()
-                        Toast.makeText(context, it.resource?.message, Toast.LENGTH_SHORT).show()
+                        Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferFailedFragment)
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
