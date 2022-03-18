@@ -1,6 +1,7 @@
 package com.yudhinurb.zwallet.ui.layout.main.findreceiver
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yudhinurb.zwallet.data.ZWalletDataSource
 import com.yudhinurb.zwallet.model.APIResponse
@@ -11,7 +12,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContactViewModel @Inject constructor(private var dataSource: ZWalletDataSource): ViewModel(){
+    private var selectedContact = MutableLiveData<AllContacts>()
+
     fun getAllContacts(): LiveData<Resource<APIResponse<List<AllContacts>>?>> {
         return dataSource.getAllContacts()
+    }
+
+    fun setSelectedContact(contact: AllContacts) {
+        selectedContact.value = contact
+    }
+
+    fun getSelectedContact(): MutableLiveData<AllContacts> {
+        return selectedContact
     }
 }

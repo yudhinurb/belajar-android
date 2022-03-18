@@ -41,19 +41,19 @@ class FindReceiverFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
+        this.contactAdapter = ContactAdapter(listOf()){
+                contact, _ -> viewModel.setSelectedContact(contact)
+            Navigation.findNavController(view).navigate(R.id.action_findReceiverFragment_to_inputAmountFragment)
+        }
+
         prepareData()
 
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
         }
-
-        binding.textContacts.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_findReceiverFragment_to_inputAmountFragment)
-        }
     }
 
     fun prepareData() {
-        this.contactAdapter = ContactAdapter(listOf())
 
         binding.recyclerContact.apply {
             layoutManager = LinearLayoutManager(context)
