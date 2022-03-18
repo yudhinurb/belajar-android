@@ -77,4 +77,14 @@ class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
             emit(Resource.error(null, e.localizedMessage))
         }
     }
+
+    fun checkPin(pin: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            var response = apiCLient.checkPin(pin = pin)
+            emit(Resource.success(response))
+        } catch (e: Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
 }

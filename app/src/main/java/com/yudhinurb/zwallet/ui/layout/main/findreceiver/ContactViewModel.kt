@@ -35,4 +35,8 @@ class ContactViewModel @Inject constructor(private var dataSource: ZWalletDataSo
     fun getAmount(): MutableLiveData<TransferRequest> {
         return transfer
     }
+
+    fun checkPin(pin: Int): LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.checkPin(pin)
+    }
 }
