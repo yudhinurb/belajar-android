@@ -1,5 +1,6 @@
 package com.yudhinurb.zwallet.ui.layout.main.inputamount
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentInputAmountBinding
 import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
+import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.utils.BASE_URL
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,6 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class InputAmountFragment : Fragment() {
     private lateinit var binding: FragmentInputAmountBinding
     private val viewModel: ContactViewModel by activityViewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +35,7 @@ class InputAmountFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
@@ -52,6 +56,10 @@ class InputAmountFragment : Fragment() {
                     RequestOptions.circleCropTransform()
                     .placeholder(R.drawable.rumbling))
                 .into(binding.imageContact)
+        }
+
+        homeViewModel.getBalance().observe(viewLifecycleOwner){
+            binding.balanceAvailable.text = "Rp " + it.resource?.data?.get(0)?.balance.toString() + " Available"
         }
     }
 }
