@@ -103,18 +103,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="40dp"
+        android:gravity="center"
         style="@style/EditText.InputAmount"
+        android:textColor="@color/blackText"
         android:background="@null"/>
 
     <EditText
         android:id="@+id/inputNotes"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="40dp"
         android:drawableStart="@drawable/ic_baseline_edit_24"
         android:hint="Add some notes"
         android:inputType="text"
+        android:textColor="@color/blackText"
         app:layout_constraintTop_toBottomOf="@id/inputAmount"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
