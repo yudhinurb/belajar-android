@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.yudhinurb.zwallet.data.ZWalletDataSource
 import com.yudhinurb.zwallet.model.APIResponse
 import com.yudhinurb.zwallet.model.AllContacts
+import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -13,6 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ContactViewModel @Inject constructor(private var dataSource: ZWalletDataSource): ViewModel(){
     private var selectedContact = MutableLiveData<AllContacts>()
+    private var transfer = MutableLiveData<TransferRequest>()
 
     fun getAllContacts(): LiveData<Resource<APIResponse<List<AllContacts>>?>> {
         return dataSource.getAllContacts()
@@ -24,5 +26,13 @@ class ContactViewModel @Inject constructor(private var dataSource: ZWalletDataSo
 
     fun getSelectedContact(): MutableLiveData<AllContacts> {
         return selectedContact
+    }
+
+    fun setAmount(data: TransferRequest){
+        transfer.value = data
+    }
+
+    fun getAmount(): MutableLiveData<TransferRequest> {
+        return transfer
     }
 }

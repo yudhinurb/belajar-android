@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentInputAmountBinding
+import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
 import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.utils.BASE_URL
@@ -44,10 +45,6 @@ class InputAmountFragment : Fragment() {
             findNavController().popBackStack()
         }
 
-        binding.btnContinue.setOnClickListener {
-            Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_confirmationFragment)
-        }
-
         viewModel.getSelectedContact().observe(viewLifecycleOwner){
             binding.contactName.text = it.name
             binding.contactNumber.text = it.phone
@@ -60,6 +57,17 @@ class InputAmountFragment : Fragment() {
 
         homeViewModel.getBalance().observe(viewLifecycleOwner){
             binding.balanceAvailable.text = "Rp " + it.resource?.data?.get(0)?.balance.toString() + " Available"
+        }
+
+        binding.btnContinue.setOnClickListener {
+            viewModel.setAmount(
+                TransferRequest(
+                    viewModel.getSelectedContact().value?.id.toString(),
+                    binding.inputAmount.text.toString().toInt(),
+                    binding.inputNotes.text.toString()
+                )
+            )
+            Navigation.findNavController(view).navigate(R.id.action_inputAmountFragment_to_confirmationFragment)
         }
     }
 }
