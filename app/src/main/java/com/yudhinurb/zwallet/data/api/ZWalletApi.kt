@@ -1,10 +1,7 @@
 package com.yudhinurb.zwallet.data.api
 
 import com.yudhinurb.zwallet.model.*
-import com.yudhinurb.zwallet.model.request.LoginRequest
-import com.yudhinurb.zwallet.model.request.RefreshTokenRequest
-import com.yudhinurb.zwallet.model.request.RegisterRequest
-import com.yudhinurb.zwallet.model.request.SetPinRequest
+import com.yudhinurb.zwallet.model.request.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -35,4 +32,7 @@ interface ZWalletApi {
 
     @GET("tranfer/contactUser")
     suspend fun getAllContacts(): APIResponse<List<AllContacts>>
+
+    @POST("tranfer/newTranfer")
+    suspend fun transfer(@Header("x-access-PIN") pin: Int, @Body request: TransferRequest): APIResponse<Transfer>
 }

@@ -8,6 +8,7 @@ import com.yudhinurb.zwallet.model.Invoice
 import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.LoginRequest
 import com.yudhinurb.zwallet.model.request.SetPinRequest
+import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
@@ -86,5 +87,16 @@ class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
         } catch (e: Exception){
             emit(Resource.error(null, e.localizedMessage))
         }
+    }
+    fun transfer(receiver:String, amount:Int, notes:String, pin: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val transferRequest = TransferRequest(receiver = receiver,amount = amount, notes = notes)
+            val response = apiCLient.transfer(pin = pin, transferRequest)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+
     }
 }

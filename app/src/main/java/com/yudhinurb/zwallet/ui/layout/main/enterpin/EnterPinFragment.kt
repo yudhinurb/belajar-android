@@ -18,7 +18,7 @@ import com.yudhinurb.zwallet.databinding.FragmentEnterPinBinding
 import com.yudhinurb.zwallet.ui.layout.main.MainActivity
 import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
 import com.yudhinurb.zwallet.ui.widget.LoadingDialog
-import com.yudhinurb.zwallet.utils.State
+import com.yudhinurb.zwallet.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
@@ -63,9 +63,17 @@ class EnterPinFragment : Fragment() {
                         loadingDialog.start("Processing your request")
                     }
                     State.SUCCESS -> {
+                        val response = viewModel.transfer(
+                            viewModel.getAmount().value?.receiver.toString(),
+                            viewModel.getAmount().value?.amount!!.toInt(),
+                            viewModel.getAmount().value?.notes.toString(),
+                            pin.toInt()
+                        )
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK){
-                            loadingDialog.stop()
-                            Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
+                            response.observe(viewLifecycleOwner) {
+                                Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
+                                loadingDialog.stop()
+                            }
                         } else {
                             Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferFailedFragment)
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()

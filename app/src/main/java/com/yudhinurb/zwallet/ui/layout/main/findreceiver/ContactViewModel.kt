@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import com.yudhinurb.zwallet.data.ZWalletDataSource
 import com.yudhinurb.zwallet.model.APIResponse
 import com.yudhinurb.zwallet.model.AllContacts
+import com.yudhinurb.zwallet.model.Transfer
+import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,5 +40,9 @@ class ContactViewModel @Inject constructor(private var dataSource: ZWalletDataSo
 
     fun checkPin(pin: Int): LiveData<Resource<APIResponse<String>?>> {
         return dataSource.checkPin(pin)
+    }
+
+    fun transfer(receiver:String, amount:Int, notes:String, pin: Int): LiveData<Resource<APIResponse<Transfer>?>> {
+        return dataSource.transfer(receiver,amount,notes,pin)
     }
 }
