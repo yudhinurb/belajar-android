@@ -35,4 +35,7 @@ interface ZWalletApi {
 
     @POST("tranfer/newTranfer")
     suspend fun transfer(@Header("x-access-PIN") pin: Int, @Body request: TransferRequest): APIResponse<Transfer>
+
+    @PATCH("user/changePassword")
+    suspend fun changePassword(@Body request: changePasswordRequest): APIResponse<String>
 }

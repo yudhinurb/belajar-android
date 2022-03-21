@@ -9,6 +9,7 @@ import com.yudhinurb.zwallet.model.User
 import com.yudhinurb.zwallet.model.request.LoginRequest
 import com.yudhinurb.zwallet.model.request.SetPinRequest
 import com.yudhinurb.zwallet.model.request.TransferRequest
+import com.yudhinurb.zwallet.model.request.changePasswordRequest
 import com.yudhinurb.zwallet.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
@@ -97,6 +98,16 @@ class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
         } catch (e: Exception) {
             emit(Resource.error(null, e.localizedMessage))
         }
+    }
 
+    fun changePassword(old_password:String, new_password:String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val changePasswordRequest = changePasswordRequest(old_password=old_password, new_password=new_password)
+            var response = apiCLient.changePassword(changePasswordRequest)
+            emit(Resource.success(response))
+        } catch (e: Exception){
+            emit(Resource.error(null, e.localizedMessage))
+        }
     }
 }

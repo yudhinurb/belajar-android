@@ -92,6 +92,10 @@ class ProfileFragment : Fragment() {
         binding.menuChangePin.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePinFragment)
         }
+
+        binding.menuChangePassword.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_changePasswordFragment)
+        }
     }
 
 }

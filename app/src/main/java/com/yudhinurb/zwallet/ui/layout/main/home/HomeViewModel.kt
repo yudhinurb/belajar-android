@@ -28,4 +28,7 @@ class HomeViewModel @Inject constructor(private var dataSource : ZWalletDataSour
     fun getProfile(): LiveData<Resource<APIResponse<Profile>?>> {
         return dataSource.getProfile()
     }
+    fun changePassword(old_password: String, new_password:String) : LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.changePassword(old_password,new_password)
+    }
 }
