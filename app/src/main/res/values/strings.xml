@@ -46,5 +46,5 @@
     <string name="text_new_pin_desc">Type your new 6 digits security PIN to use in Zwallet.</string>
     <string name="text_enter_pin_desc">Enter your 6 digits PIN for confirmation to continue transferring money.</string>
 
-    <string name="text_change_password_desc">You mmust enter your current passsword and then type your new password twice.</string>
+    <string name="text_change_password_desc">You must enter your current passsword and then type your new password twice.</string>
 </resources>

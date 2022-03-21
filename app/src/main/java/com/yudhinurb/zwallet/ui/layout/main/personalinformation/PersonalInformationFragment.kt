@@ -1,5 +1,6 @@
 package com.yudhinurb.zwallet.ui.layout.main.personalinformation
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,6 +38,13 @@ class PersonalInformationFragment : Fragment() {
 
         viewModel.getProfile().observe(viewLifecycleOwner){
             if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                if (it.resource.data?.phone.isNullOrEmpty()) {
+                    binding.cardPhoneNumberAssigned.visibility = View.GONE
+                    binding.cardPhoneNumberUnassigned.visibility = View.VISIBLE
+                } else {
+                    binding.cardPhoneNumberAssigned.visibility = View.VISIBLE
+                    binding.cardPhoneNumberUnassigned.visibility = View.GONE
+                }
                 binding.apply {
                     firstName.text = it.resource.data?.firstname
                     lastName.text = it.resource.data?.lastname

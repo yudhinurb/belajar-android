@@ -154,7 +154,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cardPhoneNumber"
+                android:id="@+id/cardPhoneNumberAssigned"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
@@ -193,6 +193,41 @@
                     android:text="Manage"
                     android:textColor="@color/primaryColor"
                     android:layout_marginEnd="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardPhoneNumberUnassigned"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/background_item_profile_menu"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardVerifiedEmail">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <TextView
+                        android:id="@+id/textPhoneNumberUnassigned"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_phone_number"
+                        android:layout_marginBottom="5dp"
+                        android:textColor="@color/darkGreyColor"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/textAddPhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add phone number"
+                        android:textSize="16sp"
+                        android:textColor="@color/primaryColor"/>
+                </LinearLayout>
             </LinearLayout>
 
 
