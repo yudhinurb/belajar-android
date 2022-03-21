@@ -49,6 +49,11 @@ class ChangePinFragment : Fragment() {
 
             val pin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6
 
+            if (pin.length < 6) {
+                Toast.makeText(context, "Lengkapi PIN", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             viewModel.checkPin(pin.toInt()).observe(viewLifecycleOwner) {
                 when (it.state) {
                     State.LOADING -> {

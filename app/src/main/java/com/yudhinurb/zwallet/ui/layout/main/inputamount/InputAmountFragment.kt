@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
@@ -60,6 +61,10 @@ class InputAmountFragment : Fragment() {
         }
 
         binding.btnContinue.setOnClickListener {
+            if (binding.inputAmount.text.isNullOrEmpty()){
+                Toast.makeText(context, "Amount required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
             viewModel.setAmount(
                 TransferRequest(
                     viewModel.getSelectedContact().value?.id.toString(),

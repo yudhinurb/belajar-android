@@ -78,11 +78,11 @@ class HomeFragment : Fragment() {
                     textPhoneNumber.text = it.resource.data?.get(0)?.phone
                     textName.text = it.resource.data?.get(0)?.name
                     Glide.with(imageProfile).load(BASE_URL +it.resource.data?.get(0)?.image).apply(
-                        RequestOptions.circleCropTransform().placeholder(R.drawable.rumbling)
+                        RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
                     ).into(imageProfile)
                 }
             } else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "${it.resource?.message}", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -105,7 +105,7 @@ class HomeFragment : Fragment() {
                             notifyDataSetChanged()
                         }
                     } else {
-                        Toast.makeText(context, it.resource?.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "${it.resource?.message}", Toast.LENGTH_SHORT).show()
                     }
                 }
                 State.ERROR -> {

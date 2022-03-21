@@ -56,6 +56,11 @@ class NewPinFragment : Fragment() {
 
             val pin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6
 
+            if (pin.length < 6) {
+                Toast.makeText(context, "Lengkapi PIN", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             val response = viewModel.createPin(
                 pin.toInt()
             )

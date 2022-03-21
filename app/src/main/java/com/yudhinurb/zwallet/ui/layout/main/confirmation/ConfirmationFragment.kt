@@ -19,6 +19,7 @@ import com.yudhinurb.zwallet.databinding.FragmentInputAmountBinding
 import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
 import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.utils.BASE_URL
+import com.yudhinurb.zwallet.utils.Helper.formatPrice
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
@@ -61,7 +62,7 @@ class ConfirmationFragment : Fragment() {
         }
 
         viewModel.getAmount().observe(viewLifecycleOwner){
-            binding.transferAmount.text = it.amount.toString()
+            binding.transferAmount.formatPrice(it.amount.toString())
             binding.balanceAmount.text = "Masih bingung ngitungnya"
             // format date
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

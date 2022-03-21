@@ -45,6 +45,7 @@
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/background_input"
         app:queryHint="Search Receiver Here"
+        app:iconifiedByDefault="false"
         />
 
     <TextView
