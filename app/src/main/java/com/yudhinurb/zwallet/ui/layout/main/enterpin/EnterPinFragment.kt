@@ -57,23 +57,22 @@ class EnterPinFragment : Fragment() {
 
             val pin = pin1 + pin2 + pin3 + pin4 + pin5 + pin6
 
-            viewModel.checkPin(pin.toInt()).observe(viewLifecycleOwner) {
+            val response = viewModel.transfer(
+                viewModel.getAmount().value?.receiver.toString(),
+                viewModel.getAmount().value?.amount!!.toInt(),
+                viewModel.getAmount().value?.notes.toString(),
+                pin.toInt()
+            )
+
+            response.observe(viewLifecycleOwner) {
                 when (it.state) {
                     State.LOADING -> {
                         loadingDialog.start("Processing your request")
                     }
                     State.SUCCESS -> {
-                        val response = viewModel.transfer(
-                            viewModel.getAmount().value?.receiver.toString(),
-                            viewModel.getAmount().value?.amount!!.toInt(),
-                            viewModel.getAmount().value?.notes.toString(),
-                            pin.toInt()
-                        )
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK){
-                            response.observe(viewLifecycleOwner) {
-                                Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
-                                loadingDialog.stop()
-                            }
+                            Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferSuccessFragment)
+                            loadingDialog.stop()
                         } else {
                             Navigation.findNavController(view).navigate(R.id.action_enterPinFragment_to_transferFailedFragment)
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
