@@ -67,11 +67,8 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionNext"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusDown="@id/et_otp2"
-            android:nextFocusForward="@id/et_otp2"
             style="@style/TextView.Medium.Bold"
             android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"
@@ -86,14 +83,10 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionNext"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusLeft="@id/et_otp1"
-            android:nextFocusDown="@id/et_otp3"
-            android:nextFocusForward="@id/et_otp3"
-            android:textColor="#1C1C1C"
-            android:textColorHint="#8B8B8B"
+            style="@style/TextView.Medium.Bold"
+            android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -105,14 +98,10 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionNext"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusLeft="@id/et_otp2"
-            android:nextFocusDown="@id/et_otp4"
-            android:nextFocusForward="@id/et_otp4"
-            android:textColor="#1C1C1C"
-            android:textColorHint="#8B8B8B"
+            style="@style/TextView.Medium.Bold"
+            android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -124,14 +113,10 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionGo"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusLeft="@id/et_otp3"
-            android:nextFocusDown="@id/et_otp5"
-            android:nextFocusForward="@id/et_otp5"
-            android:textColor="#1C1C1C"
-            android:textColorHint="#8B8B8B"
+            style="@style/TextView.Medium.Bold"
+            android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -143,14 +128,10 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionGo"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusLeft="@id/et_otp4"
-            android:nextFocusDown="@id/et_otp6"
-            android:nextFocusForward="@id/et_otp6"
-            android:textColor="#1C1C1C"
-            android:textColorHint="#8B8B8B"
+            style="@style/TextView.Medium.Bold"
+            android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"/>
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -161,12 +142,10 @@
             android:background="@drawable/background_input_otp"
             android:gravity="center"
             android:hint="_"
-            android:imeOptions="actionGo"
             android:inputType="numberPassword"
             android:maxLength="1"
-            android:nextFocusLeft="@id/et_otp5"
-            android:textColor="#1C1C1C"
-            android:textColorHint="#8B8B8B"
+            style="@style/TextView.Medium.Bold"
+            android:textColorHint="@color/lightGreyText"
             android:textSize="28sp"/>
     </LinearLayout>
 
