@@ -12,13 +12,19 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentRegisterBinding
 import com.yudhinurb.zwallet.model.APIResponse
 import com.yudhinurb.zwallet.model.request.RegisterRequest
+import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.network.NetworkConfig
 import com.yudhinurb.zwallet.ui.layout.auth.AuthActivity
+import com.yudhinurb.zwallet.ui.layout.auth.login.LoginViewModel
+import com.yudhinurb.zwallet.ui.layout.main.MainActivity
+import com.yudhinurb.zwallet.ui.widget.LoadingDialog
+import com.yudhinurb.zwallet.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,13 +34,15 @@ import javax.net.ssl.HttpsURLConnection
 @AndroidEntryPoint
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
-    private lateinit var prefs: SharedPreferences
+    private val viewModel: RegisterViewModel by activityViewModels()
+    private lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        loadingDialog = LoadingDialog(requireActivity())
         binding = FragmentRegisterBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -58,35 +66,56 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(activity, "complete the form", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            val registerRequest = RegisterRequest(
+            val response = viewModel.register(
                 binding.inputUsername.text.toString(),
                 binding.inputEmail.text.toString(),
                 binding.inputPassword.text.toString()
             )
-            NetworkConfig(context).buildApi().signup(registerRequest)
-                .enqueue(object: Callback<APIResponse<String>> {
-                    override fun onResponse(
-                        call: Call<APIResponse<String>>,
-                        response: Response<APIResponse<String>>
-                    ) {
-                        if (response.body()?.status != HttpsURLConnection.HTTP_OK){
-                            val res = response.body()!!.message
-                            Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
+            response.observe(viewLifecycleOwner) {
+                when (it.state) {
+                    State.LOADING -> {
+                        loadingDialog.start("Processing your request")
+                    }
+                    State.SUCCESS -> {
+                        if (it.resource?.status == HttpsURLConnection.HTTP_OK){
+                            viewModel.setEmail(binding.inputEmail.text.toString())
+                            Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_otpFragment)
+                            loadingDialog.stop()
                         } else {
-                            val res = response.body()!!.message
-                            Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
-                            Handler().postDelayed({
-                                val intent = Intent(activity, AuthActivity::class.java)
-                                startActivity(intent)
-                                activity?.finish()
-                            }, 2000)
+                            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
                     }
-
-                    override fun onFailure(call: Call<APIResponse<String>>, t: Throwable) {
-                        Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+                    State.ERROR -> {
+                        loadingDialog.stop()
+                        Toast.makeText(context, it.resource?.message, Toast.LENGTH_SHORT).show()
                     }
-                })
+                }
+            }
+
+//            NetworkConfig(context).buildApi().signup(registerRequest)
+//                .enqueue(object: Callback<APIResponse<String>> {
+//                    override fun onResponse(
+//                        call: Call<APIResponse<String>>,
+//                        response: Response<APIResponse<String>>
+//                    ) {
+//                        if (response.body()?.status != HttpsURLConnection.HTTP_OK){
+//                            val res = response.body()!!.message
+//                            Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
+//                        } else {
+//                            val res = response.body()!!.message
+//                            Toast.makeText(context, res, Toast.LENGTH_SHORT).show()
+//                            Handler().postDelayed({
+//                                val intent = Intent(activity, AuthActivity::class.java)
+//                                startActivity(intent)
+//                                activity?.finish()
+//                            }, 2000)
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<APIResponse<String>>, t: Throwable) {
+//                        Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+//                    }
+//                })
         }
         binding.textLogin.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.registerActionLogin)

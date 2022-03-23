@@ -35,6 +35,7 @@
     <string name="text_verified_email">Verified E-mail</string>
     <string name="text_phone_number">Phone Number</string>
 
+    <string name="text_otp_desc">We have sent your OTP (One Time Password) code via Email</string>
 
     <string name="text_create_pin">Create Security PIN</string>
     <string name="text_create_pin_desc">Create a PIN that’s contain 6 digits number for security purpose in Zwallet.</string>

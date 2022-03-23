@@ -10,7 +10,10 @@ interface ZWalletApi {
     suspend fun login(@Body request: LoginRequest): APIResponse<User>
 
     @POST("auth/signup")
-    fun signup(@Body request: RegisterRequest): Call<APIResponse<String>>
+    suspend fun signup(@Body request: RegisterRequest): APIResponse<String>
+
+    @GET("auth/activate/{email}/{otp}")
+    suspend fun tokenActivation(@Path("email")email: String, @Path("otp") otp: String): APIResponse<String>
 
     @GET("home/getBalance")
     suspend fun getBalance(): APIResponse<List<Balance>>

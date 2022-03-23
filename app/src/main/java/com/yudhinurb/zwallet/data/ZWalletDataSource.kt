@@ -23,7 +23,27 @@ class ZWalletDataSource @Inject constructor(private val apiCLient: ZWalletApi) {
         } catch (e: Exception) {
             emit(Resource.error(null, e.localizedMessage))
         }
+    }
 
+    fun register(username: String, email: String, password:String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val registerRequest = RegisterRequest(username=username, email=email, password=password)
+            val response = apiCLient.signup(registerRequest)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
+    }
+
+    fun tokenActivation(email: String, otp:String) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(null))
+        try {
+            val response = apiCLient.tokenActivation(email=email, otp=otp)
+            emit(Resource.success(response))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.localizedMessage))
+        }
     }
 
     fun getInvoice() = liveData(Dispatchers.IO) {
