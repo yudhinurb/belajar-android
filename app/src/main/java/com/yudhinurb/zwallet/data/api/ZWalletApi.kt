@@ -43,6 +43,6 @@ interface ZWalletApi {
     suspend fun changePassword(@Body request: ChangePasswordRequest): APIResponse<String>
 
     @PATCH("user/changeInfo")
-    suspend fun changeInfo(@Body request: ChangeInfoRequest): APIResponse<String>
+    suspend fun changeInfo(@Body request: ChangeInfoRequest): APIResponse<User>
 
 }

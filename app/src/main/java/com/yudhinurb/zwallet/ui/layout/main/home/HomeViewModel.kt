@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yudhinurb.zwallet.data.ZWalletDataSource
 import com.yudhinurb.zwallet.data.api.ZWalletApi
-import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.Balance
-import com.yudhinurb.zwallet.model.Invoice
-import com.yudhinurb.zwallet.model.Profile
+import com.yudhinurb.zwallet.model.*
 import com.yudhinurb.zwallet.network.NetworkConfig
 import com.yudhinurb.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,7 +28,7 @@ class HomeViewModel @Inject constructor(private var dataSource : ZWalletDataSour
     fun changePassword(old_password: String, new_password:String) : LiveData<Resource<APIResponse<String>?>> {
         return dataSource.changePassword(old_password,new_password)
     }
-    fun changeInfo(phone: String) : LiveData<Resource<APIResponse<String>?>> {
+    fun changeInfo(phone: String) : LiveData<Resource<APIResponse<User>?>> {
         return dataSource.changeInfo(phone)
     }
 }

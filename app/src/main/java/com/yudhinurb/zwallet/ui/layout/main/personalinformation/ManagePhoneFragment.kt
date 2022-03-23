@@ -57,13 +57,6 @@ class ManagePhoneFragment : Fragment() {
                 phone = ""
             )
             response.observe(viewLifecycleOwner){
-                if (it.resource?.status == HttpsURLConnection.HTTP_OK){
-                    Toast.makeText(context, "Hapus nomor telepon berhasil", Toast.LENGTH_LONG).show()
-                    findNavController().popBackStack()
-                } else {
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                }
-
                 when (it.state) {
                     State.LOADING -> {
                         loadingDialog.start("Processing your request")
