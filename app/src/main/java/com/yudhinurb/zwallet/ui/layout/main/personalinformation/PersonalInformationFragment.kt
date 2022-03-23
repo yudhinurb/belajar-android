@@ -51,13 +51,19 @@ class PersonalInformationFragment : Fragment() {
                     verifiedEmail.text = it.resource.data?.email
                     phoneNumber.text = it.resource.data?.phone
                 }
-            } else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
+        }
+
+        binding.textAddPhoneNumber.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_personalInformationFragment_to_addPhoneFragment)
+        }
+
+        binding.textManage.setOnClickListener {
+            Navigation.findNavController(view).navigate(R.id.action_personalInformationFragment_to_managePhoneFragment)
         }
     }
 

@@ -31,4 +31,7 @@ class HomeViewModel @Inject constructor(private var dataSource : ZWalletDataSour
     fun changePassword(old_password: String, new_password:String) : LiveData<Resource<APIResponse<String>?>> {
         return dataSource.changePassword(old_password,new_password)
     }
+    fun changeInfo(phone: String) : LiveData<Resource<APIResponse<String>?>> {
+        return dataSource.changeInfo(phone)
+    }
 }
