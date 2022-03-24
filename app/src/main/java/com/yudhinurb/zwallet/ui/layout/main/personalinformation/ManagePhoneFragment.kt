@@ -43,12 +43,29 @@ class ManagePhoneFragment : Fragment() {
         }
 
         viewModel.getProfile().observe(viewLifecycleOwner){
-            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
-                binding.apply {
-                    phoneNumber.text = it.resource.data?.phone
+            when (it.state) {
+                State.LOADING -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
                 }
-            } else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                State.SUCCESS -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                    }
+                    if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                        binding.apply {
+                            phoneNumber.text = it.resource.data?.phone
+                        }
+                    } else {
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                State.ERROR -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
+                }
             }
         }
 

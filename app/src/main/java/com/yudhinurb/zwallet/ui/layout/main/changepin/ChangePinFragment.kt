@@ -1,5 +1,6 @@
 package com.yudhinurb.zwallet.ui.layout.main.changepin
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,6 +8,7 @@ import android.view.*
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -41,6 +43,16 @@ class ChangePinFragment : Fragment() {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         initEditText()
+
+        binding.etOtp6.addTextChangedListener {
+            if (!binding.etOtp6.text.isNullOrEmpty()) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login_active)
+                binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.etOtp6.text.isNullOrEmpty()) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login)
+                binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
 
         binding.btnLogin.setOnClickListener{
             val pin1 = binding.etOtp1.text.toString()

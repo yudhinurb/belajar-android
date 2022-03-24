@@ -12,10 +12,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentPersonalInformationBinding
 import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.ui.layout.viewModelsFactory
+import com.yudhinurb.zwallet.utils.BASE_URL
+import com.yudhinurb.zwallet.utils.State
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
@@ -37,19 +41,36 @@ class PersonalInformationFragment : Fragment() {
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
         viewModel.getProfile().observe(viewLifecycleOwner){
-            if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
-                if (it.resource.data?.phone.isNullOrEmpty()) {
-                    binding.cardPhoneNumberAssigned.visibility = View.GONE
-                    binding.cardPhoneNumberUnassigned.visibility = View.VISIBLE
-                } else {
-                    binding.cardPhoneNumberAssigned.visibility = View.VISIBLE
-                    binding.cardPhoneNumberUnassigned.visibility = View.GONE
+            when (it.state) {
+                State.LOADING -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
                 }
-                binding.apply {
-                    firstName.text = it.resource.data?.firstname
-                    lastName.text = it.resource.data?.lastname
-                    verifiedEmail.text = it.resource.data?.email
-                    phoneNumber.text = it.resource.data?.phone
+                State.SUCCESS -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                    }
+                    if (it.resource?.status == HttpsURLConnection.HTTP_OK) {
+                        if (it.resource.data?.phone.isNullOrEmpty()) {
+                            binding.cardPhoneNumberAssigned.visibility = View.GONE
+                            binding.cardPhoneNumberUnassigned.visibility = View.VISIBLE
+                        } else {
+                            binding.cardPhoneNumberAssigned.visibility = View.VISIBLE
+                            binding.cardPhoneNumberUnassigned.visibility = View.GONE
+                        }
+                        binding.apply {
+                            firstName.text = it.resource.data?.firstname
+                            lastName.text = it.resource.data?.lastname
+                            verifiedEmail.text = it.resource.data?.email
+                            phoneNumber.text = it.resource.data?.phone
+                        }
+                    }
+                }
+                State.ERROR -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
                 }
             }
         }
