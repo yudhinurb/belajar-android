@@ -44,7 +44,11 @@
         android:id="@+id/createPinFragment"
         android:name="com.yudhinurb.zwallet.ui.layout.auth.createpin.CreatePinFragment"
         android:label="CreatePinFragment"
-        tools:layout="@layout/fragment_create_pin"/>
+        tools:layout="@layout/fragment_create_pin">
+        <action
+            android:id="@+id/action_createPinFragment_to_pinSuccessFragment"
+            app:destination="@id/pinSuccessFragment" />
+    </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
         android:name="com.yudhinurb.zwallet.ui.layout.auth.resetpassword.ResetPasswordFragment"
@@ -59,4 +63,9 @@
             android:id="@+id/action_otpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/pinSuccessFragment"
+        android:name="com.yudhinurb.zwallet.ui.layout.auth.pinsuccess.PinSuccessFragment"
+        android:label="PinSuccessFragment"
+        tools:layout="@layout/fragment_pin_success"/>
 </navigation>

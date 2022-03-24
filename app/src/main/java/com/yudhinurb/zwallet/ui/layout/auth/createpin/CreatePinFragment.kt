@@ -11,6 +11,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
+import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentCreatePinBinding
 import com.yudhinurb.zwallet.ui.layout.main.MainActivity
 import com.yudhinurb.zwallet.ui.layout.viewModelsFactory
@@ -65,11 +67,8 @@ class CreatePinFragment : Fragment() {
                     }
                     State.SUCCESS -> {
                         if (it.resource?.status == HttpsURLConnection.HTTP_OK){
-                            Handler().postDelayed({
-                                val intent = Intent(activity, MainActivity::class.java)
-                                startActivity(intent)
-                                loadingDialog.stop()
-                                activity?.finish()}, 2000)
+                            Navigation.findNavController(view).navigate(R.id.action_createPinFragment_to_pinSuccessFragment)
+                            loadingDialog.stop()
                         } else {
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                         }
