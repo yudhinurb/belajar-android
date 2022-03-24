@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.yudhinurb.zwallet.R
@@ -42,6 +43,16 @@ class ChangePasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        binding.inputRepeatPassword.addTextChangedListener {
+            if (binding.inputRepeatPassword.text.length > 8) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login_active)
+                binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.inputRepeatPassword.text.length <= 8) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login)
+                binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
+            }
+        }
 
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
