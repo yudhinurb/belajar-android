@@ -54,8 +54,9 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:scaleType="centerCrop"
+            android:background="@color/backgroundGrey"
             app:shapeAppearanceOverlay="@style/RoundCornerOverlay"
-            android:src="@drawable/plus"/>
+            android:src="@drawable/ic_baseline_add_24"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
                 android:layout_marginBottom="10dp"
                 android:textSize="14sp"
                 android:gravity="center"
-                android:textColor="@color/darkGreyColor"/>
+                android:textColor="@color/greyText"/>
             <TextView
                 android:id="@+id/virtualAccountNumber"
                 android:layout_width="wrap_content"
@@ -80,7 +81,7 @@
                 android:layout_marginBottom="5dp"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                android:textColor="@color/blackText"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -92,7 +93,7 @@
         android:layout_marginTop="20dp"
         android:textSize="14sp"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/greyText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cardVirtualAccountNumber"/>
@@ -103,7 +104,8 @@
         android:layout_height="wrap_content"
         android:text="How to Top Up"
         android:textSize="18sp"
-        android:textColor="#514F5B"
+        android:textColor="@color/blackText"
+        android:fontFamily="@font/nunito_sans_bold"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,8 +145,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="1"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -168,7 +171,6 @@
                 android:id="@+id/secondStep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginHorizontal="20dp"
@@ -186,8 +188,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="2"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -211,7 +214,6 @@
                 android:id="@+id/thirdStep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -230,8 +232,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="3"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -255,7 +258,6 @@
                 android:id="@+id/fourthStep"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -274,8 +276,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="4"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -299,7 +302,6 @@
                 android:id="@+id/fifthStep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -318,8 +320,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="5"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -343,7 +346,6 @@
                 android:id="@+id/sixthStep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -362,8 +364,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="6"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -387,7 +390,6 @@
                 android:id="@+id/seventhStep"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="15dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
@@ -406,8 +408,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="7"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -450,8 +453,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="8"
-                    android:textColor="@color/darkGreyColor"
-                    android:textSize="25sp"/>
+                    android:textColor="@color/blueColor"
+                    android:fontFamily="@font/nunito_sans_bold"
+                    android:textSize="16sp"/>
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
