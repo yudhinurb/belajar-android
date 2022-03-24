@@ -1,6 +1,7 @@
 package com.yudhinurb.zwallet.ui.layout.main.enterpin
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -9,6 +10,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -47,6 +49,16 @@ class EnterPinFragment : Fragment() {
 
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
+        }
+
+        binding.etOtp6.addTextChangedListener {
+            if (!binding.etOtp6.text.isNullOrEmpty()) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login_active)
+                binding.btnLogin.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.etOtp6.text.isNullOrEmpty()) {
+                binding.btnLogin.setBackgroundResource(R.drawable.background_button_login)
+                binding.btnLogin.setTextColor(Color.parseColor("#9DA6B5"))
+            }
         }
 
         binding.btnLogin.setOnClickListener {

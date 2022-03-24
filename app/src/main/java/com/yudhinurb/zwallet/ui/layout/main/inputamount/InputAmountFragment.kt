@@ -1,6 +1,7 @@
 package com.yudhinurb.zwallet.ui.layout.main.inputamount
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
@@ -58,6 +60,16 @@ class InputAmountFragment : Fragment() {
 
         homeViewModel.getBalance().observe(viewLifecycleOwner){
             binding.balanceAvailable.text = "Rp " + it.resource?.data?.get(0)?.balance.toString() + " Available"
+        }
+
+        binding.inputAmount.addTextChangedListener {
+            if (!binding.inputAmount.text.isNullOrEmpty()) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_login_active)
+                binding.btnContinue.setTextColor(Color.parseColor("#FFFFFF"))
+            } else if (binding.inputAmount.text.isNullOrEmpty()) {
+                binding.btnContinue.setBackgroundResource(R.drawable.background_button_login)
+                binding.btnContinue.setTextColor(Color.parseColor("#9DA6B5"))
+            }
         }
 
         binding.btnContinue.setOnClickListener {

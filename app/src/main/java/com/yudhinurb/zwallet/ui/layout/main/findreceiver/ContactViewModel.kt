@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yudhinurb.zwallet.data.ZWalletDataSource
-import com.yudhinurb.zwallet.model.APIResponse
-import com.yudhinurb.zwallet.model.AllContacts
-import com.yudhinurb.zwallet.model.Transfer
-import com.yudhinurb.zwallet.model.User
+import com.yudhinurb.zwallet.model.*
 import com.yudhinurb.zwallet.model.request.TransferRequest
 import com.yudhinurb.zwallet.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

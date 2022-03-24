@@ -1,5 +1,7 @@
 package com.yudhinurb.zwallet.ui.layout.main.confirmation
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -20,32 +23,35 @@ import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
 import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.utils.BASE_URL
 import com.yudhinurb.zwallet.utils.Helper.formatPrice
+import com.yudhinurb.zwallet.utils.PREFS_NAME
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import javax.net.ssl.HttpsURLConnection
 
 @AndroidEntryPoint
 class ConfirmationFragment : Fragment() {
     private lateinit var binding: FragmentConfirmationBinding
     private val viewModel: ContactViewModel by activityViewModels()
     private val homeViewModel: HomeViewModel by activityViewModels()
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         binding = FragmentConfirmationBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
+
+        prefs = activity?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
 
         binding.btnBack.setOnClickListener{
             findNavController().popBackStack()
@@ -61,9 +67,20 @@ class ConfirmationFragment : Fragment() {
                 .into(binding.imageContact)
         }
 
+
+
         viewModel.getAmount().observe(viewLifecycleOwner){
             binding.transferAmount.formatPrice(it.amount.toString())
-            binding.balanceAmount.text = "Masih bingung ngitungnya"
+            val transferAmount = it.amount
+            homeViewModel.getBalance().observe(viewLifecycleOwner) {
+                if (it.resource?.status == HttpsURLConnection.HTTP_OK){
+                    binding.apply {
+                        balanceAmount.formatPrice((it.resource.data?.get(0)?.balance!!.toInt() - transferAmount).toString())
+                    }
+                } else {
+                    Toast.makeText(context, "${it.resource?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
             // format date
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val current = LocalDateTime.now()

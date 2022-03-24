@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
@@ -16,17 +17,20 @@ import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.databinding.FragmentTransferSuccessBinding
 import com.yudhinurb.zwallet.ui.layout.main.MainActivity
 import com.yudhinurb.zwallet.ui.layout.main.findreceiver.ContactViewModel
+import com.yudhinurb.zwallet.ui.layout.main.home.HomeViewModel
 import com.yudhinurb.zwallet.utils.BASE_URL
+import com.yudhinurb.zwallet.utils.Helper.formatPrice
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import javax.net.ssl.HttpsURLConnection
 
 
 class TransferSuccessFragment : Fragment() {
     private lateinit var binding: FragmentTransferSuccessBinding
     private val viewModel: ContactViewModel by activityViewModels()
-
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,9 +62,18 @@ class TransferSuccessFragment : Fragment() {
                 .into(binding.imageContact)
         }
 
+        homeViewModel.getBalance().observe(viewLifecycleOwner) {
+            if (it.resource?.status == HttpsURLConnection.HTTP_OK){
+                binding.apply {
+                    balanceAmount.formatPrice(it.resource.data?.get(0)?.balance.toString())
+                }
+            } else {
+                Toast.makeText(context, "${it.resource?.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         viewModel.getAmount().observe(viewLifecycleOwner){
-            binding.transferAmount.text = it.amount.toString()
-            binding.balanceAmount.text = "Masih bingung ngitungnya"
+            binding.transferAmount.formatPrice(it.amount.toString())
             // format date
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val current = LocalDateTime.now()
