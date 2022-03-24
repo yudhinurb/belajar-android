@@ -40,7 +40,7 @@
                 android:text="Hello,"
                 android:textSize="14sp"
                 android:gravity="center"
-                android:textColor="@color/darkGreyColor"/>
+                android:textColor="@color/greyText"/>
             <TextView
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
@@ -49,7 +49,8 @@
                 android:layout_marginBottom="5dp"
                 android:textSize="16sp"
                 android:gravity="center"
-                android:textColor="@color/black"/>
+                style="@style/TextView.Small.Bold"
+                android:textColor="@color/blackText"/>
         </LinearLayout>
         <TextView
             android:id="@+id/iconNotification"
@@ -110,13 +111,13 @@
             android:id="@+id/buttonTransfer"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:drawableStart="@drawable/up"
+            android:drawableStart="@drawable/ic_baseline_arrow_upward_24"
             android:text="Transfer"
             android:padding="20dp"
             android:layout_weight="2"
-            android:textColor="@color/black"
+            android:textColor="@color/blackText"
             android:textAllCaps="false"
-            android:backgroundTint="@color/backgroundColorButton"
+            android:backgroundTint="@color/backgroundGrey"
             android:layout_marginStart="16dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="15dp"/>
@@ -126,14 +127,14 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:padding="20dp"
-            android:backgroundTint="@color/backgroundColorButton"
+            android:backgroundTint="@color/backgroundGrey"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="25dp"
             android:text="TopUp"
-            android:drawableStart="@drawable/plus"
+            android:drawableStart="@drawable/ic_baseline_add_24"
             android:layout_weight="2"
-            android:textColor="@color/black"
+            android:textColor="@color/blackText"
             android:textAllCaps="false"/>
     </LinearLayout>
     <TextView
@@ -142,7 +143,8 @@
         android:layout_height="wrap_content"
         android:text="Transaction History"
         android:textSize="18sp"
-        android:textColor="#514F5B"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:textColor="@color/blackText"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"

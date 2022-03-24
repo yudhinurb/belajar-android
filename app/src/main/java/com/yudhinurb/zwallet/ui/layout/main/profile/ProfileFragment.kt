@@ -57,7 +57,7 @@ class ProfileFragment : Fragment() {
                     ).into(imageProfile)
                 }
             } else {
-                Toast.makeText(context, "apasih", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
         }
 

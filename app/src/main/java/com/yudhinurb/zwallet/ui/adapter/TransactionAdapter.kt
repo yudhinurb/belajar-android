@@ -12,6 +12,8 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.yudhinurb.zwallet.R
 import com.yudhinurb.zwallet.model.Invoice
 import com.yudhinurb.zwallet.utils.BASE_URL
+import com.yudhinurb.zwallet.utils.Helper.formatPrice
+
 
 class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<TransactionAdapter.TransactionAdapterHolder>() {
     private lateinit var contextAdapter: Context
@@ -25,7 +27,7 @@ class TransactionAdapter(private var data: List<Invoice>): RecyclerView.Adapter<
         fun bindData(data: Invoice, context: Context, position: Int){
             name.text = data.name
             type.text = data.type?.uppercase()
-            amount.text = data.amount.toString()
+            amount.formatPrice(data.amount.toString())
             Glide.with(image).load(BASE_URL+data.image).apply(
                 RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
             ).into(image)

@@ -17,6 +17,7 @@
     <color name="backgroundColorButton">#DADADA</color>
     <color name="greyColor">#DFDCDC</color>
     <color name="darkGreyColor">#9DA6D5</color>
+    <color name="backgroundGrey">#EAEDFF</color>
 
     <color name="blackText">#3A3D42</color>
     <color name="lightGreyText">#B0B1B3</color>
