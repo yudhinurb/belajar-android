@@ -24,6 +24,7 @@ import com.yudhinurb.zwallet.ui.layout.viewModelsFactory
 import com.yudhinurb.zwallet.utils.BASE_URL
 import com.yudhinurb.zwallet.utils.KEY_LOGGED_IN
 import com.yudhinurb.zwallet.utils.PREFS_NAME
+import com.yudhinurb.zwallet.utils.State
 import dagger.hilt.android.AndroidEntryPoint
 import javax.net.ssl.HttpsURLConnection
 
@@ -32,6 +33,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var prefs: SharedPreferences
     private val viewModel: HomeViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,17 +50,36 @@ class ProfileFragment : Fragment() {
         prefs = context?.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)!!
 
         viewModel.getBalance().observe(viewLifecycleOwner) {
-            if (it.resource?.status == HttpsURLConnection.HTTP_OK){
-                binding.apply {
-                    textPhoneNumber.text = it.resource.data?.get(0)?.phone
-                    textName.text = it.resource.data?.get(0)?.name
-                    Glide.with(imageProfile).load(BASE_URL +it.resource.data?.get(0)?.image).apply(
-                        RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
-                    ).into(imageProfile)
+            when (it.state) {
+                State.LOADING -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
                 }
-            } else {
-                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                State.SUCCESS -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.GONE
+                    }
+                    if (it.resource?.status == HttpsURLConnection.HTTP_OK){
+                        binding.apply {
+                            textPhoneNumber.text = it.resource.data?.get(0)?.phone
+                            textName.text = it.resource.data?.get(0)?.name
+                            Glide.with(imageProfile).load(BASE_URL +it.resource.data?.get(0)?.image).apply(
+                                RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
+                            ).into(imageProfile)
+                        }
+                    } else {
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+                State.ERROR -> {
+                    binding.apply {
+                        loadingIndicator.visibility = View.VISIBLE
+                    }
+                }
             }
+
+
         }
 
         binding.btnLogout.setOnClickListener {
