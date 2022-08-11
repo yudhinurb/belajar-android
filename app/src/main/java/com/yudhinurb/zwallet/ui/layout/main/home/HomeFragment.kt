@@ -81,8 +81,6 @@ class HomeFragment : Fragment() {
                         RequestOptions.circleCropTransform().placeholder(R.drawable.ic_baseline_broken_image_24)
                     ).into(imageProfile)
                 }
-            } else {
-                Toast.makeText(context, "${it.resource?.message}", Toast.LENGTH_SHORT).show()
             }
         }
 

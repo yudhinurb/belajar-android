@@ -38,7 +38,8 @@
                 android:text="@string/text_signup"
                 android:textAlignment="center"
                 style="@style/TextView.Login"
-                android:textColor="@color/darkGreyColor"
+                android:textColor="@color/blackText"
+                android:fontFamily="@font/nunito_sans_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"/>
@@ -51,7 +52,7 @@
                 android:textAlignment="center"
                 android:layout_marginTop="20dp"
                 android:text="@string/text_register_desc"
-                style="@style/TextView.SplashScreen.Desc"
+                style="@style/TextView.Small"
                 android:textColor="@color/darkGreyColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
